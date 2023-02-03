@@ -1,0 +1,971 @@
+{
+	"info": {
+		"_postman_id": "8d0743cc-728f-4d04-8306-dfafa4c24e2d",
+		"name": "users bugred",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21206432"
+	},
+	"item": [
+		{
+			"name": "doregister test",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"{{$randomPassword}}\",\r\n    \"password\": \"889\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"889\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{name2}}@mail.com\",\r\n    \"name\": \" {{$randomFullName}}\",\r\n    \"password\": \"889\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister 3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email2',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email2}}\",\r\n    \"name\": \" {{$randomFullName}}\",\r\n    \"password\": \"889\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"company is created\", function(){\r",
+							"        pm.response.to.have.status(200); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"{{company_name}}\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{email}}\", \"{{email1}}\"],\r\n  \"email_owner\": \"{{email2}}\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}createcompany",
+					"host": [
+						"{{urlusers}}createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "magicsearch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"I found it!\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(234); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"query\":\"{{company_name}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}magicsearch",
+					"host": [
+						"{{urlusers}}magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"\",\r\n    \"name\": \"\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"{{$randomFullName}}\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 4",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"1231214546534534342135135531513515688551651235135215121548786453123154684515213\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 5",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"785522asjdnsvjfbvhkfsbvfdbvhdfkvbdfhvkdfvksfnvsjdvndsjvnsdjvndsjvnkx vmxc kvjnvdsjkfjskdnfjdsknvjsdnvjsdn@gmail.com\",\r\n    \"name\": \"123121454653453434585585\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 6",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"+++++++@\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 7",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"olggmail.com\",\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 8",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"<><<<++-\",\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 9",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"<><><><<><@@@\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister Negative 10",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var email = _.random(1000) + '@gmail.com'\r",
+							"pm.environment.set('email',email)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"><><><\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}doregister",
+					"host": [
+						"{{urlusers}}doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcompany negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Yes i did it\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{email}}\", \"{{email1}}\"],\r\n  \"email_owner\": \"{{email2}}\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}createcompany",
+					"host": [
+						"{{urlusers}}createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcompany negative 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Yes i did it\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"{{company_name}}\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"{{email}}\", \"{{email1}}\"],\r\n  \"email_owner\": \"\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}createcompany",
+					"host": [
+						"{{urlusers}}createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcompany negative 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Yes i did it\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"\",\r\n  \"company_type\": \"\",\r\n  \"company_users\": [\"\"],\r\n  \"email_owner\": \"\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}createcompany",
+					"host": [
+						"{{urlusers}}createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcompany negative 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Yes i did it\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"{{company_name}}\",\r\n  \"company_type\": \"\",\r\n  \"company_users\": [\"{{email}}\", \"{{email1}}\"],\r\n  \"email_owner\": \"{{email2}}\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}createcompany",
+					"host": [
+						"{{urlusers}}createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createcompany negative 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Yes i did it\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"{{company_name}}\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"\"],\r\n  \"email_owner\": \"{{email2}}\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}createcompany",
+					"host": [
+						"{{urlusers}}createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "magicsearch negative ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"I found it!\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(234); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"query\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}magicsearch",
+					"host": [
+						"{{urlusers}}magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "magicsearch negative 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"I found it!\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(234); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"query\":\"23131351sfjnsdkfjdsjfhsdajvdsnvkdsvdf64vfd56bdf4h5fsafashufuhfhdsufhsduf;hdsfj\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}magicsearch",
+					"host": [
+						"{{urlusers}}magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "magicsearch negative 2 999simbols",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"I found it!\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(234); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"query\":\"1325153153153153113151531531531351531515153выавыа1вы53п15аы1п5вап15ва1пр5ва1р5пв31р53па1р5а1р53а1р5р31п5а1р5ар1а5п3р1а5пр31а5р31арпар15315153333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333331351553153333333333333333333333333333333333333331515315353111111111111111111115315153153153\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}magicsearch",
+					"host": [
+						"{{urlusers}}magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "magicsearch negative 3 >1000 simbols",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"I found it!\"), function()\r",
+							"{\r",
+							"    pm.response.to.have.status(234); \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"query\":\"1325153153153153113151531531531351531515153выавыа1вы53п15аы1п5вап15ва1пр5ва1р5пв31р53па1р5а1р53а1р5р31п5а1р5ар1а5п3р1а5пр31а5р31арпар153151533333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333313515531533333333333333333333333333333333333333315153153531111111111111111111153151531531531231515346\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlusers}}magicsearch",
+					"host": [
+						"{{urlusers}}magicsearch"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlusers",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
